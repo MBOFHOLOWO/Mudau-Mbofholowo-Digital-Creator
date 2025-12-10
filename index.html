@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mudau Mbofholowo | Digital Creator & Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c63ff;
+            --secondary: #ff6584;
+            --accent: #36d1dc;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --dark-text: #f1f5f9;
+            --light-bg: #f8fafc;
+            --light-card: #ffffff;
+            --light-text: #1e293b;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            transition: var(--transition);
+            line-height: 1.6;
+        }
+
+        body.light-mode {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--dark-card);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        body.light-mode header {
+            background-color: var(--light-card);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: var(--radius);
+        }
+
+        body.light-mode .nav-links a {
+            color: var(--light-text);
+        }
+
+        .nav-links a:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .theme-toggle {
+            background: var(--dark-card);
+            border: none;
+            color: var(--dark-text);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        body.light-mode .theme-toggle {
+            background: var(--light-card);
+            color: var(--light-text);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--dark-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(54, 209, 220, 0.1));
+            border-radius: 0 0 var(--radius) var(--radius);
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--dark-text);
+            border: 2px solid var(--primary);
+        }
+
+        body.light-mode .btn-secondary {
+            color: var(--light-text);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Cards & Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background-color: var(--dark-card);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.light-mode .card {
+            background-color: var(--light-card);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+            flex-grow: 1;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 15px 0;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            color: var(--accent);
+            border-left: 5px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        /* Contact Buttons */
+        .contact-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .whatsapp-btn, .call-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .call-btn {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .whatsapp-btn:hover, .call-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-card);
+            padding: 60px 0 30px;
+            margin-top: 80px;
+            transition: var(--transition);
+        }
+
+        body.light-mode footer {
+            background-color: var(--light-card);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: var(--dark-text);
+            text-decoration: none;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        body.light-mode .footer-links a {
+            color: var(--light-text);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        body.light-mode .social-icons a {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+
+        body.light-mode .copyright {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--dark-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            color: var(--dark-text);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        body.light-mode .form-control {
+            background-color: var(--light-card);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--light-text);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark-card);
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 0;
+                gap: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                z-index: 99;
+            }
+            
+            body.light-mode .nav-links {
+                background-color: var(--light-card);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .contact-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .contact-buttons {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .whatsapp-btn, .call-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Page Content */
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Service Item */
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--dark-card);
+            border-radius: var(--radius);
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+
+        body.light-mode .service-item {
+            background-color: var(--light-card);
+        }
+
+        .service-item:hover {
+            transform: translateX(10px);
+        }
+
+        .service-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .service-info p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .service-price {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .service-request {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .service-request:hover {
+            background-color: var(--accent);
+        }
+
+        /* Package Cards */
+        .package-card {
+            text-align: center;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .package-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            position: relative;
+        }
+
+        .package-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .package-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .package-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.light-mode .package-features li {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contact Buttons (WhatsApp & Call) -->
+    <div class="contact-buttons">
+        <a href="tel:0768470096" class="call-btn">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://wa.me/27768470096?text=Hi%20Mudau!%20I'm%20interested%20in%20your%20services" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Mudau | Creative</div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li><a href="#" data-page="products">Products</a></li>
+                    <li><a href="#" data-page="services">Services</a></li>
+                    <li><a href="#" data-page="websites">Websites</a></li>
+                    <li><a href="#" data-page="branding">Branding</a></li>
+                    <li><a href="#" data-page="about">About</a></li>
+                    <li><a href="#" data-page="contact">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Content Container -->
+    <main id="pageContainer">
+        <!-- Home Page -->
+        <section class="page-content active" id="home">
+            <div class="hero">
+                <div class="container">
+                    <h1>Mudau Mbofholowo | Digital Creator</h1>
+                    <p>Transforming ideas into stunning digital experiences. From wallpapers to full websites, I offer fast, affordable, and high-quality design solutions tailored to your needs.</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary" data-page="contact">
+                            <i class="fas fa-briefcase"></i> Hire Me
+                        </a>
+                        <a href="#" class="btn btn-secondary" data-page="products">
+                            <i class="fas fa-shopping-cart"></i> Shop Digital Products
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <h2 class="section-title">Quick Services Overview</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3>Wallpapers</h3>
+                        <p>Beautiful, high-resolution wallpapers for all devices. Multiple packs available.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Posters</h3>
+                        <p>Custom posters for promotions, events, and businesses. Ready to print.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Websites</h3>
+                        <p>Responsive, modern websites for businesses, portfolios, and landing pages.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI Products</h3>
+                        <p>Digital planners, notebooks, vision boards and more powered by AI tools.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Micro Services</h3>
+                        <p>Quick design and editing tasks at affordable prices. Fast delivery guaranteed.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
+                        <h3>Branding Kits</h3>
+                        <p>Complete branding packages including logo, colors, and social media templates.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 80px;">
+                    <h2 class="section-title">Why Choose Me</h2>
+                    <div class="cards-grid">
+                        <div class="card" style="text-align: center;">
+                            <div class="card-icon">
+                                <i class="fas fa-shipping-fast"></i>
+                            </div>
+                            <h3>Fast Delivery</h3>
+                            <p>Most micro-services delivered within 24 hours. No long waiting times.</p>
+                        </div>
+                        <div class="card" style="text-align: center;">
+                            <div class="card-icon">
+                                <i class="fas fa-tags"></i>
+                            </div>
+                            <h3>Affordable Pricing</h3>
+                            <p>Quality digital products and services at prices that won't break the bank.</p>
+                        </div>
+                        <div class="card" style="text-align: center;">
+                            <div class="card-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h3>Custom Requests</h3>
+                            <p>Need something specific? I can customize any product to your needs.</p>
+                        </div>
+                        <div class="card" style="text-align: center;">
+                            <div class="card-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h3>High-Quality Design</h3>
+                            <p>Professional, modern designs that make your brand stand out.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Page -->
+        <section class="page-content" id="products">
+            <div class="container">
+                <h1 class="section-title">Digital Products</h1>
+                
+                <h2 class="category-title">Wallpapers</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Programmer Wallpaper" class="product-image">
+                        <h3>Programmer Pack</h3>
+                        <p>20+ coding-inspired wallpapers with dark/light themes for developers.</p>
+                        <div class="price">R45</div>
+                        <a href="https://gumroad.com/l/programmer-pack" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
+                        </a>
+                    </div>
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Aesthetic Wallpaper" class="product-image">
+                        <h3>Aesthetic Pack</h3>
+                        <p>Beautiful, calming wallpapers with nature and minimalist designs.</p>
+                        <div class="price">R45</div>
+                        <a href="https://gumroad.com/l/aesthetic-pack" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
+                        </a>
+                    </div>
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Minimal Wallpaper" class="product-image">
+                        <h3>Minimal Pack</h3>
+                        <p>Clean, simple wallpapers with geometric patterns and subtle colors.</p>
+                        <div class="price">R45</div>
+                        <a href="https://gumroad.com/l/minimal-pack" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
+                        </a>
+                    </div>
+                </div>
+                
+                <h2 class="category-title">Christmas & Promo Posters</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Salon Poster" class="product-image">
+                        <h3>Salon Posters</h3>
+                        <p>Professional posters for hair salons, spas, and beauty businesses.</p>
+                        <div class="price">R60</div>
+                        <a href="https://gumroad.com/l/salon-posters" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
+                        </a>
+                    </div>
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Barber Poster" class="product-image">
+                        <h3>Barber Posters</h3>
+                        <p>Masculine designs for barbershops and grooming services.</p>
+                        <div class="price">R60</div>
+                        <a href="https://gumroad.com/l/barber-posters" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
+                        </a>
+                    </div>
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Spaza Specials" class="product-image">
+                        <h3>Spaza Specials</h3>
+                        <p>Promotional posters for small shops and spaza store promotions.</p>
+                        <div class="price">R50</div>
+                        <a href="https://gumroad.com/l/spaza-specials" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
+                        </a>
+                    </div>
+                </div>
+                
+                <h2 class="category-title">AI Digital Products</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1531346688376-ab6275c4725e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="2025 Planner" class="product-image">
+                        <h3>2025 Digital Planner</h3>
+                        <p>Comprehensive yearly planner with monthly, weekly, and daily layouts.</p>
+                        <div class="price">R120</div>
+                        <a href="https://gumroad.com/l/2025-planner" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
+                        </a>
+                    </div>
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Digital Notebook" class="product-image">
+                        <h3>Digital Notebooks</h3>
+                        <p>Beautiful notebooks for note-taking, journaling, and brainstorming.</p>
+                        <div class="price">R80</div>
+                        <a href="https://gumroad.com/l/digital-notebooks" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
+                        </a>
+                    </div>
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Vision Board" class="product-image">
+                        <h3>Vision Boards</h3>
+                        <p>Customizable vision boards to visualize and achieve your goals.</p>
+                        <div class="price">R90</div>
+                        <a href="https://gumroad.com/l/vision-boards" class="btn btn-primary" target="_blank">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Page -->
+        <section class="page-content" id="services">
+            <div class="container">
+                <h1 class="section-title">Micro Services</h1>
+                <p style="text-align: center; margin-bottom: 40px; font-size: 1.1rem;">Fast delivery services at affordable prices. Most tasks completed within 24 hours.</p>
+                
+                <div class="services-list">
+                    <div class="service-item">
+                        <div class="service-info">
+                            <h4>Remove Background</h4>
+                            <p>Clean background removal for product images or portraits</p>
+                        </div>
+                        <div class="service-price">R30</div>
+                        <button class="service-request">
+                            <i class="fab fa-whatsapp"></i> Request
+                        </button>
+                    </div>
+                    
+                    <div class="service-item">
+                        <div class="service-info">
+                            <h4>PDF ↔ Word Conversion</h4>
+                            <p>Convert PDF to editable Word or Word to PDF format</p>
+                        </div>
+                        <div class="service-price">R40</div>
+                        <button class="service-request">
+                            <i class="fab fa-whatsapp"></i> Request
+                        </button>
+                    </div>
+                    
+                    <div class="service-item">
+                        <div class="service-info">
+                            <h4>CV Creation</h4>
+                            <p>Professional CV design tailored to your industry</p>
+                        </div>
+                        <div class="service-price">R150</div>
+                        <button class="service-request">
+                            <i class="fab fa-whatsapp"></i> Request
+                        </button>
+                    </div>
+                    
+                    <div class="service-item">
+                        <div class="service-info">
+                            <h4>Poster Design</h4>
+                            <p>Custom poster for events, promotions, or announcements</p>
+                        </div>
+                        <div class="service-price">R80</div>
+                        <button class="service-request">
+                            <i class="fab fa-whatsapp"></i> Request
+                        </button>
+                    </div>
+                    
+                    <div class="service-item">
+                        <div class="service-info">
+                            <h4>Image Editing</h4>
+                            <p>Color correction, retouching, and enhancement</p>
+                        </div>
+                        <div class="service-price">R50</div>
+                        <button class="service-request">
+                            <i class="fab fa-whatsapp"></i> Request
+                        </button>
+                    </div>
+                    
+                    <div class="service-item">
+                        <div class="service-info">
+                            <h4>Basic Coding Fixes</h4>
+                            <p>Debugging and fixing issues in HTML, CSS, or JavaScript</p>
+                        </div>
+                        <div class="service-price">R100</div>
+                        <button class="service-request">
+                            <i class="fab fa-whatsapp"></i> Request
+                        </button>
+                    </div>
+                    
+                    <div class="service-item">
+                        <div class="service-info">
+                            <h4>Assignment Explanations</h4>
+                            <p>Step-by-step explanations for coding or design assignments</p>
+                        </div>
+                        <div class="service-price">R120</div>
+                        <button class="service-request">
+                            <i class="fab fa-whatsapp"></i> Request
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Websites Page -->
+        <section class="page-content" id="websites">
+            <div class="container">
+                <h1 class="section-title">Web Development Packages</h1>
+                <p style="text-align: center; margin-bottom: 50px; font-size: 1.1rem;">Professional, responsive websites tailored to your needs. All packages include mobile optimization and basic SEO.</p>
+                
+                <div class="cards-grid">
+                    <div class="card package-card">
+                        <div class="card-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Basic Landing Page</h3>
+                        <div class="price">R300</div>
+                        <ul class="package-features">
+                            <li>1 page design</li>
+                            <li>Services, About, Contact sections</li>
+                            <li>WhatsApp integration</li>
+                            <li>Mobile responsive</li>
+                            <li>Basic SEO setup</li>
+                            <li>Delivery: 3 days</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" data-page="contact">Order Now</a>
+                    </div>
+                    
+                    <div class="card package-card featured">
+                        <div class="card-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Business Website</h3>
+                        <div class="price">R650+</div>
+                        <ul class="package-features">
+                            <li>Up to 3 pages</li>
+                            <li>Custom design</li>
+                            <li>Image gallery</li>
+                            <li>Contact form</li>
+                            <li>Mobile responsive</li>
+                            <li>Social media integration</li>
+                            <li>Delivery: 5-7 days</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" data-page="contact">Order Now</a>
+                    </div>
+                    
+                    <div class="card package-card">
+                        <div class="card-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Portfolio Website</h3>
+                        <div class="price">R500</div>
+                        <ul class="package-features">
+                            <li>Clean & professional design</li>
+                            <li>Project showcase</li>
+                            <li>About & Contact pages</li>
+                            <li>Mobile responsive</li>
+                            <li>Fast loading</li>
+                            <li>Delivery: 4-6 days</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary" data-page="contact">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Branding Page -->
+        <section class="page-content" id="branding">
+            <div class="container">
+                <h1 class="section-title">Branding Kits</h1>
+                <p style="text-align: center; margin-bottom: 50px; font-size: 1.1rem;">Complete branding solutions to establish a consistent and professional visual identity for your business.</p>
+                
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-signature"></i>
+                        </div>
+                        <h3>Logo Design</h3>
+                        <p>Custom logo design with 3 concepts and final files in multiple formats.</p>
+                        <div class="price">R200 - R350</div>
+                        <button class="btn btn-primary whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <h3>Business Card Design</h3>
+                        <p>Professional business card design ready for print with front and back layout.</p>
+                        <div class="price">R150</div>
+                        <button class="btn btn-primary whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Color Palette</h3>
+                        <p>Custom color scheme with HEX/RGB codes and usage guidelines for your brand.</p>
+                        <div class="price">R120</div>
+                        <button class="btn btn-primary whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h3>Social Media Templates</h3>
+                        <p>Set of templates for posts, stories, and covers for all major platforms.</p>
+                        <div class="price">R180</div>
+                        <button class="btn btn-primary whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <h3>Banner Design</h3>
+                        <p>Website headers, email banners, and promotional banners in various sizes.</p>
+                        <div class="price">R150</div>
+                        <button class="btn btn-primary whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <h3>Complete Branding Kit</h3>
+                        <p>Everything included: logo, cards, palette, templates, and style guide.</p>
+                        <div class="price">R600</div>
+                        <button class="btn btn-primary whatsapp-order">
+                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section class="page-content" id="about">
+            <div class="container">
+                <h1 class="section-title">About Me</h1>
+                
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div style="text-align: center; margin-bottom: 50px;">
+                        <div style="width: 200px; height: 200px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent)); margin: 0 auto 30px; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h2 style="font-size: 2rem; margin-bottom: 15px;">Mudau Mbofholowo</h2>
+                        <p style="font-size: 1.2rem; opacity: 0.9;">Digital Creator, Designer & Developer</p>
+                    </div>
+                    
+                    <div class="card" style="margin-bottom: 30px;">
+                        <h3>Who I Am</h3>
+                        <p>I'm Mudau Mbofholowo, a passionate digital creator with expertise in design, development, and digital product creation. My journey started with a love for both art and technology, which naturally evolved into a career where I help individuals and small businesses establish their digital presence.</p>
+                    </div>
+                    
+                    <div class="card" style="margin-bottom: 30px;">
+                        <h3>My Skills</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
+                            <span style="background: rgba(108, 99, 255, 0.2); padding: 10px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-code"></i> Web Development
+                            </span>
+                            <span style="background: rgba(108, 99, 255, 0.2); padding: 10px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-paint-brush"></i> Graphic Design
+                            </span>
+                            <span style="background: rgba(108, 99, 255, 0.2); padding: 10px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-robot"></i> AI Tools
+                            </span>
+                            <span style="background: rgba(108, 99, 255, 0.2); padding: 10px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-mobile-alt"></i> UI/UX Design
+                            </span>
+                            <span style="background: rgba(108, 99, 255, 0.2); padding: 10px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-shopping-cart"></i> Digital Products
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="card" style="margin-bottom: 30px;">
+                        <h3>My Mission</h3>
+                        <p>To provide affordable, high-quality digital solutions that empower small businesses, creators, and entrepreneurs to thrive online. I believe everyone deserves access to professional digital tools without the high costs typically associated with agencies.</p>
+                    </div>
+                    
+                    <div class="card" style="margin-bottom: 30px;">
+                        <h3>What Makes Me Different</h3>
+                        <p>I combine technical expertise with creative design thinking. Unlike larger agencies, I offer personalized attention to every project, ensuring your vision is perfectly translated into the final product. My micro-services model makes professional design accessible to everyone.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Tools I Use</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
+                            <span style="background: rgba(54, 209, 220, 0.2); padding: 10px 20px; border-radius: 50px;">
+                                <i class="fab fa-figma"></i> Figma
+                            </span>
+                            <span style="background: rgba(54, 209, 220, 0.2); padding: 10px 20px; border-radius: 50px;">
+                                <i class="fas fa-code"></i> VS Code
+                            </span>
+                            <span style="background: rgba(54, 209, 220, 0.2); padding: 10px 20px; border-radius: 50px;">
+                                <i class="fab fa-adobe"></i> Adobe Suite
+                            </span>
+                            <span style="background: rgba(54, 209, 220, 0.2); padding: 10px 20px; border-radius: 50px;">
+                                <i class="fas fa-cube"></i> Blender
+                            </span>
+                            <span style="background: rgba(54, 209, 220, 0.2); padding: 10px 20px; border-radius: 50px;">
+                                <i class="fas fa-brain"></i> AI Tools
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 50px;">
+                        <a href="#" class="btn btn-primary" data-page="contact" style="padding: 18px 40px; font-size: 1.2rem;">
+                            <i class="fas fa-briefcase"></i> Hire Me for Your Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section class="page-content" id="contact">
+            <div class="container">
+                <h1 class="section-title">Get In Touch</h1>
+                <p style="text-align: center; margin-bottom: 50px; font-size: 1.1rem;">Have a project in mind? Need a custom quote? Reach out via any method below.</p>
+                
+                <div class="cards-grid" style="margin-bottom: 60px;">
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3>WhatsApp</h3>
+                        <p>Fastest response time for quick questions and service requests.</p>
+                        <a href="https://wa.me/27768470096?text=Hi%20Mudau!%20I'm%20interested%20in%20your%20services" class="btn btn-primary" target="_blank" style="margin-top: 20px;">
+                            <i class="fab fa-whatsapp"></i> Chat Now
+                        </a>
+                    </div>
+                    
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Call Me</h3>
+                        <p>Prefer to talk? Call me directly for immediate assistance.</p>
+                        <a href="tel:0768470096" class="btn btn-primary" style="margin-top: 20px;">
+                            <i class="fas fa-phone"></i> Call Now
+                        </a>
+                    </div>
+                    
+                    <div class="card" style="text-align: center;">
+                        <div class="card-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p>For detailed project briefs and formal inquiries.</p>
+                        <a href="mailto:mudaumbofholowo18@gmail.com" class="btn btn-primary" style="margin-top: 20px;">
+                            <i class="fas fa-envelope"></i> Send Email
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form" id="contact-form">
+                    <h2 style="text-align: center; margin-bottom: 30px;">Send a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="mudaumbofholowo18@gmail.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Interest</label>
+                            <select id="service" class="form-control" required>
+                                <option value="">Select a service</option>
+                                <option value="web">Website Development</option>
+                                <option value="design">Graphic Design</option>
+                                <option value="product">Digital Products</option>
+                                <option value="branding">Branding Kit</option>
+                                <option value="micro">Micro Service</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Project Details</label>
+                            <textarea id="message" class="form-control" placeholder="Tell me about your project, timeline, and budget..." required></textarea>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <button type="submit" class="btn btn-primary" style="padding: 16px 50px; font-size: 1.1rem;">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div style="text-align: center; margin-top: 60px;">
+                    <h3 style="margin-bottom: 20px;">Connect on Social Media</h3>
+                    <div class="social-icons" style="justify-content: center;">
+                        <a href="#" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Mudau Mbofholowo</h3>
+                    <p>Digital design and development services for individuals and small businesses. Fast, affordable, and high-quality solutions.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:0768470096">076 847 0096</a>
+                        </li>
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <a href="https://wa.me/27768470096" target="_blank">WhatsApp: 076 847 0096</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:mudaumbofholowo18@gmail.com">mudaumbofholowo18@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" data-page="home">Home</a></li>
+                        <li><a href="#" data-page="products">Products</a></li>
+                        <li><a href="#" data-page="services">Services</a></li>
+                        <li><a href="#" data-page="websites">Web Development</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" data-page="branding">Branding Kits</a></li>
+                        <li><a href="#" data-page="services">Micro Services</a></li>
+                        <li><a href="#" data-page="products">Digital Products</a></li>
+                        <li><a href="#" data-page="contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Mudau Mbofholowo. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--secondary);"></i> for the digital community.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const themeToggle = document.getElementById('themeToggle');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        const pageContainer = document.getElementById('pageContainer');
+        const navItems = document.querySelectorAll('.nav-links a, .btn[data-page], .footer-links a[data-page]');
+        
+        // Theme Toggle
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            const icon = themeToggle.querySelector('i');
+            if (document.body.classList.contains('light-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+        
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update active nav link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Close mobile menu if open
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Add click events to all navigation links
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = item.getAttribute('data-page');
+                if (pageId) {
+                    showPage(pageId);
+                }
+            });
+        });
+        
+        // Service request buttons
+        document.querySelectorAll('.service-request').forEach(button => {
+            button.addEventListener('click', () => {
+                const serviceName = button.closest('.service-item').querySelector('h4').textContent;
+                const price = button.closest('.service-item').querySelector('.service-price').textContent;
+                const message = `Hi Mudau! I'd like to request the service: ${serviceName} (${price}). Can you help me with this?`;
+                const encodedMessage = encodeURIComponent(message);
+                window.open(`https://wa.me/27768470096?text=${encodedMessage}`, '_blank');
+            });
+        });
+        
+        // Branding order buttons
+        document.querySelectorAll('.whatsapp-order').forEach(button => {
+            button.addEventListener('click', () => {
+                const productName = button.closest('.card').querySelector('h3').textContent;
+                const price = button.closest('.card').querySelector('.price').textContent;
+                const message = `Hi Mudau! I'm interested in ordering: ${productName} (${price}). Can you provide more details?`;
+                const encodedMessage = encodeURIComponent(message);
+                window.open(`https://wa.me/27768470096?text=${encodedMessage}`, '_blank');
+            });
+        });
+        
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Create WhatsApp message
+            const serviceText = {
+                'web': 'Website Development',
+                'design': 'Graphic Design',
+                'product': 'Digital Products',
+                'branding': 'Branding Kit',
+                'micro': 'Micro Service',
+                'other': 'Other Service'
+            }[service] || service;
+            
+            const whatsappMessage = `New Contact Form Submission from ${name}:
+Name: ${name}
+Email: ${email}
+Service: ${serviceText}
+Message: ${message}`;
+            
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Open WhatsApp with the message
+            window.open(`https://wa.me/27768470096?text=${encodedMessage}`, '_blank');
+            
+            // Show success message
+            alert('Thank you for your message, ' + name + '! You are being redirected to WhatsApp to complete your inquiry.');
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+        });
+        
+        // Initialize the first page
+        showPage('home');
+    </script>
+</body>
+</html>
